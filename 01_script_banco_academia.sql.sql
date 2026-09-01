@@ -102,3 +102,71 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+USE `BancoAcademia`;
+
+-- 1. POVOAMENTO DA TABELA: planos
+INSERT INTO `planos` (`nome`, `valor`, `duracao_meses`) VALUES
+('Plano Mensal Básico', 119.90, 1),
+('Plano Trimestral', 299.70, 3),
+('Plano Semestral', 539.40, 6),
+('Plano Anual Premium', 958.80, 12),
+('Plano Student', 89.90, 1),
+('Plano VIP Total', 189.90, 1),
+('Plano Família (Anual)', 1798.80, 12),
+('Plano Corporal Light', 99.90, 1),
+('Plano Crossfit Mensal', 149.90, 1),
+('Plano Terceira Idade', 79.90, 1);
+
+-- 2. POVOAMENTO DA TABELA: instrutores
+INSERT INTO `instrutores` (`nome`, `cpf`, `especialidade`, `telefone`) VALUES
+('Roberto Melo', '101.202.303-11', 'Musculação', '(47) 98111-0001'),
+('Patricia Andrade', '202.303.404-22', 'Spinning', '(47) 98222-0002'),
+('Marcelo Ramos', '303.404.505-33', 'Crossfit', '(47) 98333-0003'),
+('Vanessa Dias', '404.505.606-44', 'Pilates', '(47) 98444-0004'),
+('André Luiz', '505.606.707-55', 'Muay Thai', '(47) 98555-0005'),
+('Camila Farias', '606.707.808-66', 'Zumba', '(47) 98666-0006'),
+('Diego Castro', '707.808.909-77', 'Calistenia', '(47) 98777-0007'),
+('Larissa Machado', '808.909.000-88', 'Natação', '(47) 98888-0008'),
+('Felipe Nogueira', '909.000.111-99', 'Musculação', '(47) 98999-0009'),
+('Renata Silveira', '000.111.222-00', 'Yoga', '(47) 98000-0010');
+
+-- 3. POVOAMENTO DA TABELA: alunos
+INSERT INTO `alunos` (`nome`, `cpf`, `telefone`, `data_nascimento`, `planos_id_plano`) VALUES
+('Lucas Silva', '111.222.333-44', '(47) 99111-1001', '1995-03-12', 1),
+('Mariana Santos', '222.333.444-55', '(47) 99222-1002', '1998-07-25', 2),
+('Carlos Eduardo', '333.444.555-66', '(47) 99333-1003', '1990-11-05', 3),
+('Beatriz Lima', '444.555.666-77', '(47) 99444-1004', '2001-01-30', 4),
+('Gabriel Oliveira', '555.666.777-88', '(47) 99555-1005', '1992-09-18', 1),
+('Fernanda Costa', '666.777.888-99', '(47) 99666-1006', '1988-05-14', 2),
+('Rodrigo Alves', '777.888.999-00', '(47) 99777-1007', '1996-12-08', 5),
+('Juliana Pereira', '888.999.000-11', '(47) 99888-1008', '2003-04-22', 6),
+('Mateus Rocha', '999.000.111-22', '(47) 99999-1009', '1985-08-19', 3),
+('Aline Martins', '000.111.222-33', '(47) 99000-1010', '1999-10-02', 4);
+
+-- 4. POVOAMENTO DA TABELA: turmas
+INSERT INTO `turmas` (`nome_atividade`, `horario`, `dias_semana`, `instrutores_id_instrutor`) VALUES
+('Musculação Manhã', '07:00:00', 'Seg, Quar, Sex', 1),
+('Spinning Intenso', '18:30:00', 'Ter, Quin', 2),
+('Crossfit WOD', '19:00:00', 'Seg, Quar, Sex', 3),
+('Pilates Solo', '08:00:00', 'Ter, Quin', 4),
+('Muay Thai Noite', '20:00:00', 'Seg, Quar, Sex', 5),
+('Zumba Dance', '17:30:00', 'Ter, Quin', 6),
+('Calistenia Avançada', '10:00:00', 'Sábados', 7),
+('Natação Adulto', '06:30:00', 'Seg, Quar, Sex', 8),
+('Musculação Tarde', '15:00:00', 'Seg a Sex', 9),
+('Yoga Matinal', '07:30:00', 'Ter, Quin', 10);
+
+-- 5. POVOAMENTO DA TABELA: matriculas
+INSERT INTO `matriculas` (`data_inscricao`, `alunos_id_aluno`, `turmas_id_turma`) VALUES
+('2024-01-10', 1, 1),
+('2024-01-12', 2, 2),
+('2024-01-15', 3, 3),
+('2024-02-01', 4, 4),
+('2024-02-05', 5, 5),
+('2024-02-10', 6, 6),
+('2024-02-15', 7, 7),
+('2024-03-01', 8, 8),
+('2024-03-05', 9, 9),
+('2024-03-10', 10, 10);
